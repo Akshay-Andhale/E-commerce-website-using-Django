@@ -1,0 +1,34 @@
+<h3>Here is the list of all Available products</h3>
+<div>
+    {% if prod %}
+    <table border="2" style="border: 2px solid black; border-collapse: collapse; height: 30%; width: 30%;">
+
+        <thead>
+            <tr>
+                
+                <th>Shape</th>
+                <th>Size</th>
+                <th>Location</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for st in prod %}
+            <tr>
+                
+                <td>{{st.shape}}</td>
+                <td>{{st.size}}</td>
+                <td>{{st.location}}</td>
+                <td>{{st.price}}</td>
+                <td style="display: inline;">
+                    <a href="{% url 'update_datap' st.id %}">Edit</a> &nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'details' st.id %}">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+

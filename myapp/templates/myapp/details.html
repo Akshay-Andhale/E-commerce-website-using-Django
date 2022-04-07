@@ -1,0 +1,39 @@
+<p>Here is the details of your chosen product</p>
+<div>
+    {% if elem %}
+    <table border="2" style="border: 2px solid black; border-collapse: collapse; height: 10%; width: 30%;">
+        <thead>
+            <tr >
+                
+                <th>Shape of the product</th>
+                <th>Size</th>
+                <th>Available at</th>
+                <th>Priced at</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        
+            <tr>
+                
+                <td>{{elem.shape}}</td>
+                <td>{{elem.size}}</td>
+                <td>{{elem.location}}</td>
+                <td>{{elem.price}}</td>
+                <td>
+                    <button><a href="#"></a>Add</button> &nbsp;
+                    <button><a href="{% url 'showp' %}"></a>Home</button> 
+                </td>
+                
+            </tr>
+            
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+<h3>Looking for the similar products? Check out the link below</h3>
+<div><a href="{% url 'recommendation' elem.id %}">Recommendations</a></div>
+
+

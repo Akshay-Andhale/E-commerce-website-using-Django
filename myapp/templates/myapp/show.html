@@ -1,0 +1,33 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div>
+    {% if stud %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for st in stud %}
+            <tr>
+                <td>{{st.id}}</td>
+                <td>{{st.name}}</td>
+                <td>{{st.age}}</td>
+                <td>{{st.address}}</td>
+                <td style="display: inline;">
+                    <a href="{% url 'update_data' st.id %}">Edit</a>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+{% endblock content %}

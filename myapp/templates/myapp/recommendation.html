@@ -1,0 +1,35 @@
+
+<h3>Here are the most matched products according to your Search...</h3>
+<div>
+    {% if related %}
+    <table border="2" style="border: 2px solid black; border-collapse: collapse;height: 50%; width: 50%; ">
+        <thead>
+            <tr >
+                
+                <th>Shape &nbsp;</th>
+                <th>Size &nbsp;</th>
+                <th>location &nbsp;</th>
+                <th>Price &nbsp;</th>
+                <th>Visit thr Link &nbsp;</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for item in related %}
+            <tr>
+                
+                <td>{{item.shape}}</td>
+                <td>{{item.size}}</td>
+                <td>{{item.location}}</td>
+                <td>{{item.price}}</td>
+                <td><a href="{% url 'details' item.id %}">Link</a></td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+
+

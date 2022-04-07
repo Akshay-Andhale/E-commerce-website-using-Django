@@ -1,0 +1,46 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<h2 style="text-align: center;">Add new Student</h2>
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <input type="submit" value="Add">
+    </form>
+</div>
+
+<div>
+    {% if stud %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for st in stud %}
+            <tr>
+                <td>{{st.id}}</td>
+                <td>{{st.name}}</td>
+                <td>{{st.email}}</td>
+                <td style="display: inline;">
+                    <a href="{% url 'update_data' st.id %}">Edit</a>
+                    <form action="{% url 'delete_data' st.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete">
+
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+{% endblock content %}
